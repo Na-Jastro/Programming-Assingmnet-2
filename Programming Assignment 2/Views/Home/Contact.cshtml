@@ -1,0 +1,114 @@
+﻿@* //////////////////////////////======== Contact Details Page================/////////////////////////// *@
+
+<div class="container">
+    <br />
+    <div class="col-lg-12">
+
+        <div class="col-lg-6">
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+            {
+                <div class="row">
+                    <label style="font-size:15px;color:#fdb801" class="required ">Name</label><br />
+                    <input class="required form-control" onchange="myName(this.value)" style="width:400px;border-color:#007bff!important;border-width:2px" for="name" id="name" name="name" type="text" value="" /><div id="div1"></div><br />
+                </div>
+                <div class="row">
+                    <label style="font-size:15px;color:#fdb801" class="required " for="email">Email</label><br />
+                    <input id="email" onchange="myEmail(this.value)" class="required form-control" style="width:400px;border-color:#007bff!important;border-width:2px" name="email" type="text" value="" size="30" /><div id="div2"></div><br />
+                </div>
+                <div class="row">
+                    <label style="font-size:15px;color:#fdb801" class="required" for="message">Message</label><br />
+                    <textarea onchange="myMessage(this.value)" id="message" class="required form-control" style="width:400px;border-color:#007bff!important;border-width:2px" name="message" rows="7" cols="30"></textarea><div id="div3"></div><br />
+                </div>
+                <input class="btn btn-success" id="submit_button" onclick="validate()" type="button" value="Send email" />
+            }
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card bg-light mb-3">
+                <div><label style="font-size:15px;color:#fdb801" class="required ">Address</label><br /></div>
+                <div class="card-body" style="font-size:13px">
+                    <p style="font-size:15px;color:#606060">399 Jorissen street</p>
+                    <p style="font-size:15px;color:#606060">202 Beverly Hills</p>
+                    <p style="font-size:15px;color:#606060">Pretoria</p>
+                    <p style="font-size:15px;color:#606060">SunnySide</p>
+                    <p style="font-size:15px;color:#606060">0002</p>
+                    <p style="font-size:15px;color:#606060">email : justicengwenya10@gmail.com</p>
+                    <p style="font-size:15px;color:#606060">Tel. 067 172 9876</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* //////////////////////////////======== Javscript Validation================/////////////////////////// *@
+
+<script type="text/javascript">
+
+    function myMessage(args) {
+        var name = document.getElementById("message").value;
+        if (name != null) {
+            document.getElementById("message").style.borderColor = "#007bff";
+            document.getElementById("div3").innerHTML = "";
+        }
+    }
+
+    function myEmail(args) {
+        var name = document.getElementById("email").value;
+        var charName = String.fromCharCode(64);
+        var email = document.getElementById("email").value;
+
+        if (name != null && email.indexOf(charName) > -1) {
+            document.getElementById("email").style.borderColor = "#007bff";
+            document.getElementById("div2").innerHTML = "";
+        }
+    }
+
+
+    function myName(args) {
+        var name = document.getElementById("name").value;
+        if (name != null) {
+            document.getElementById("name").style.borderColor = "#007bff";
+            document.getElementById("div1").innerHTML = "";
+        }
+    }
+
+
+    function validate() {
+        //debugger;
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var message = $('#message').val().trim();
+
+        if (name === "") {
+            document.getElementById("name").style.borderColor = "red";
+            document.getElementById("div1").innerHTML = "Enter a value";
+            document.getElementById("div1").style.color = "Red";
+        }
+        else {
+            document.getElementById("div1").innerHTML = "";
+        }
+        var charName = String.fromCharCode(64);
+        if (email.indexOf(charName) > -1) {
+            document.getElementById("div2").innerHTML = "";
+        }
+        else {
+            document.getElementById("email").style.borderColor = "red";
+            document.getElementById("div2").innerHTML = "Enter the correct email address";
+            document.getElementById("div2").style.color = "Red";
+        }
+        if (message === "") {
+            document.getElementById("message").style.borderColor = "red";
+            document.getElementById("div3").innerHTML = "Message Required";
+            document.getElementById("div3").style.color = "Red";
+        }
+        else {
+            document.getElementById("div3").innerHTML = "";
+        }
+    }
+</script>
+
+@* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *@
+
+
+
+

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Home</h2>
+
+@if (Request.IsAuthenticated)
+{
+
+    Response.Redirect("~/Home/Index");
+}
+else
+{
+
+    Response.Redirect("~/Account/Login");
+}

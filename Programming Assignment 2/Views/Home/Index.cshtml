@@ -1,0 +1,53 @@
+﻿@model Programming_Assignment_2.Models.Home.HomeIndexViewModel
+@using PagedList;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@* //////////////////////////////======== Home Page ================/////////////////////////// *@
+
+@if (Request.IsAuthenticated)
+{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2 style="color:#fdb801">Product</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row product-container">
+        @foreach (var item in Model.ListOfProducts)
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+                <div class="thumbnail product-item" style="height:300px;border-color:#007bff!important;border-width:2px">
+
+                    <img class="img-responsive" title="Click to View Product detail"
+                         style="cursor:pointer;height:160px;width:100%"
+                         src="~/ProductImg/@item.ProductImage" />
+
+                    <div class="caption">
+                        <h5 style="font-size:20px;color:#fdb801">@item.ProductName</h5>
+                        <p style="font-size:15px;color:#000">R. @item.Price</p>
+                        <p>
+                            @if (item.Quantity > 0)
+                            {
+                                using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="pull-right btn btn-success"><i></i>Add to Cart</button>
+                                }
+
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+}
+else
+{
+    Response.Redirect("~/Account/Login");
+}
+@*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@

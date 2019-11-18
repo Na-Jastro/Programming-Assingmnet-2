@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@* //////////////////////////////======== About Details================/////////////////////////// *@
+
+
+<div class="aboutus-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aboutus">
+                    <h2 class="aboutus-title">About Us</h2>
+                    <p class="aboutus-text">La Vita Living Products is a multi-level sales company that supports independent distributors engaged in selling our products. Distributors are encouraged to build networks of distributors and expand their businesses. We offer training sessions to give our distributors the necessary skills for starting their own businesses and work according to a Profit Plan that encourages members to always aim higher.</p>
+                    <a class="aboutus-more" href="https://www.lavitaliving.co.za/">read more</a>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aboutus-banner">
+                    <img src="~/About-us-image.jpg" />
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6 col-xs-12">
+                <div class="aboutus">
+                    <h2 class="aboutus-title">History</h2>
+                    <p class="aboutus-text">The La Vita Living Products logo is of a seagull flying to new heights and was inspired by the book Johnathan Livingston Seagull by Richard Bach. The book is about a seagull with dreams bigger than the rest of his flock. It teaches mankind to aim for more than we are taught possible as this quote from the book illustrates: “We can lift ourselves out of ignorance, we can find ourselves as creatures of excellence and intelligence and skill.” For this reason the seagull was chosen as our logo and every time you look at it should encourage you to reach for your goals even when others discourage you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+@* //////////////////////////////======== CSS ================/////////////////////////// *@
+
+<style type="text/css">
+
+    .aboutus-section {
+        padding: 90px 0;
+    }
+
+    .aboutus-title {
+        font-size: 30px;
+        letter-spacing: 0;
+        line-height: 32px;
+        margin: 0 0 39px;
+        padding: 0 0 11px;
+        position: relative;
+        text-transform: uppercase;
+        color: #fdb801;
+    }
+
+        .aboutus-title::after {
+            background: #fdb801 none repeat scroll 0 0;
+            bottom: 0;
+            content: "";
+            height: 2px;
+            left: 0;
+            position: absolute;
+            width: 54px;
+        }
+
+    .aboutus-text {
+        color: #606060;
+        font-size: 15px;
+        line-height: 22px;
+        margin: 0 0 35px;
+    }
+
+    a:hover, a:active {
+        text-decoration: none;
+        outline: 0;
+    }
+
+    .aboutus-more {
+        border: 1px solid #fdb801;
+        border-radius: 25px;
+        color: #fdb801;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0;
+        padding: 7px 20px;
+        text-transform: uppercase;
+    }
+
+    .feature .feature-box .iconset {
+        background: #fff none repeat scroll 0 0;
+        float: left;
+        position: relative;
+        width: 18%;
+    }
+
+        .feature .feature-box .iconset::after {
+            background: #fdb801 none repeat scroll 0 0;
+            content: "";
+            height: 150%;
+            left: 43%;
+            position: absolute;
+            top: 100%;
+            width: 1px;
+        }
+
+    .feature .feature-box .feature-content h4 {
+        color: #0f0f0f;
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: 22px;
+        margin: 0 0 5px;
+    }
+
+
+    .feature .feature-box .feature-content {
+        float: left;
+        padding-left: 28px;
+        width: 78%;
+    }
+
+        .feature .feature-box .feature-content h4 {
+            color: #0f0f0f;
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 22px;
+            margin: 0 0 5px;
+        }
+
+        .feature .feature-box .feature-content p {
+            color: #606060;
+            font-size: 13px;
+            line-height: 22px;
+        }
+
+    .icon {
+        color: #f4b841;
+        padding: 0px;
+        font-size: 40px;
+        border: 1px solid #fdb801;
+        border-radius: 100px;
+        color: #fdb801;
+        font-size: 28px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        width: 70px;
+    }
+</style>
+
+@*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@

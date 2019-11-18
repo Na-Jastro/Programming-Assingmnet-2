@@ -1,0 +1,112 @@
+﻿@using Programming_Assignment_2.Models.Home;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:#fdb801">Shopping Cart Details</h2>
+@* //////////////////////////////======== Shopping Cart Details================/////////////////////////// *@
+@if (Request.IsAuthenticated)
+{
+    @* //////////////////////////////======== C# Functions================/////////////////////////// *@
+    @functions {
+
+        int total;
+        double shippingCost;
+        double subtotal;
+
+        int calculate(int price)
+        {
+            total = total + Convert.ToInt32(price);
+            return total;
+        }
+
+        double estimatedShipping(int total)
+        {
+            shippingCost = total * 0.0762;
+            return shippingCost;
+        }
+        double estimatedSubTotal(int total, double shippingCost)
+        {
+            subtotal = total - shippingCost;
+            return subtotal;
+        }
+    }
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                    </tr>
+                    <tbody>
+                        @if (Session["cart"] != null)
+                        {
+                            foreach (Item item in (List<Item>)Session["cart"])
+                            {
+
+                                calculate(Convert.ToInt32(item.Product.Price));
+
+                                <tr>
+                                    <td class="col-sm-8 col-md-6">
+                                        <div class="media">
+                                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="~/ProductImg/@item.Product.ProductImage" style="width: 72px; height: 72px;"> </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><a href="#">@item.Product.ProductName"</a></h4>
+                                                <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" value="@item.Quantity">
+                                    </td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong>R @item.Product.Price</strong></td>
+                                    @*<td class="col-sm-1 col-md-1">
+                                        <button type="button" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-remove"></span> Remove
+                                        </button>
+                                    </td>*@
+                                </tr>
+                                estimatedShipping(total);
+                                estimatedSubTotal(total, shippingCost);
+                            }
+                            <tr>
+                                <td>   </td>
+                             
+                                <td><h5>Subtotal</h5></td>
+                                <td class="text-right"><h5><strong>R @subtotal</strong></h5></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                              
+                                <td><h5>Estimated shipping</h5></td>
+                                <td class="text-right"><h5><strong>R @shippingCost</strong></h5></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                
+                                <td><h3>Total</h3></td>
+                                <td class="text-right"><h3><strong>R @total</strong></h3></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                              
+                                <td>
+                                    <button type="button" onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-warning">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                    </button>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
